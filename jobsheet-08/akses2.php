@@ -26,3 +26,4 @@
     echo $laptop_anto->matikan_laptop(); echo "<br>";
 
 ?>
+
