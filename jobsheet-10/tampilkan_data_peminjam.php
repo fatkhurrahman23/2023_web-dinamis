@@ -28,7 +28,7 @@
                     <td><?php echo $no++; ?></td>
                     <td><?php echo $x['kode_peminjam']; ?></td>
                     <td><?php echo $x['nama_peminjam']; ?></td>
-                    <td><?php echo $x['jenis_kelamin']; ?></td>
+                    <td><?php echo $x['keterangan_jk']; ?></td>
                     <td><?php
                         $tanggal_lahir = $x['tanggal_lahir'];
                         $tanggal_lahir_ganti_format = date('d-m-Y', strtotime($tanggal_lahir));

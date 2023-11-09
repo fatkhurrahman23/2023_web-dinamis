@@ -13,11 +13,22 @@
             }
         }
         function tampil_data() {
-            $data = mysqli_query($this->koneksi, "SELECT * FROM data_peminjam");
+            $data = mysqli_query($this->koneksi, "SELECT a.*, b.* FROM data_peminjam a INNER JOIN jenis_kelamin b ON b.kode_jk = a.jenis_kelamin");
             while($row = mysqli_fetch_array($data)) {
                 $hasil[] = $row;
             }
             return $hasil;
+        }
+        function tampil_data_jenis_kelamin() {
+            $data_jenis_kelamin = mysqli_query($this->koneksi, "SELECT * FROM jenis_kelamin");
+            while($row_jenis_kelamin = mysqli_fetch_array($data_jenis_kelamin)) {
+                $hasil_jenis_kelamin[] = $row_jenis_kelamin;
+            }
+            return $hasil_jenis_kelamin;
+        }
+        function tambah_data_peminjam($kode_peminjaman, $nama_peminjam, $jenis_kelamin, $tanggal_lahir, $alamat, $pekerjaan) {
+            mysqli_query($this->koneksi, "INSERT INTO data_peminjam (id, kode_peminjam, nama_peminjam, jenis_kelamin, tanggal_lahir, alamat, pekerjaan)
+                VALUES('', '$kode_peminjaman', '$nama_peminjam', '$jenis_kelamin', '$tanggal_lahir', '$alamat', '$pekerjaan')");
         }
     }
 ?>
