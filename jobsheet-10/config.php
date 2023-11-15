@@ -43,5 +43,22 @@
         function hapus_data_peminjam($kode_peminjam) {
             mysqli_query($this->koneksi, "DELETE FROM data_peminjam WHERE kode_peminjam='$kode_peminjam'");
         }
+        function tampil_jenis_buku(){
+            $data = mysqli_query($this->koneksi, "SELECT * FROM data_jenis_buku");
+            while($row = mysqli_fetch_array($data)) {
+                $hasil[] = $row;
+            }
+            return $hasil;
+        }
+        function tambah_data_penerbit($kode_penerbit, $nama_penerbit) {
+            mysqli_query($this->koneksi, "INSERT INTO data_penerbit VALUES ('','$kode_penerbit', '$nama_penerbit')");
+        }
+        function tampil_data_penerbit() {
+            $data = mysqli_query($this->koneksi, "SELECT * FROM data_penerbit");
+            while($row = mysqli_fetch_array($data)) {
+                $hasil[] = $row;
+            }
+            return $hasil;
+        }
     }
 ?>
