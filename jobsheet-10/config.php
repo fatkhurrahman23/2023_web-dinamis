@@ -73,5 +73,36 @@
             }
             return $hasil;
         }
+        function ambil_data_pengarang() {
+            $data = mysqli_query($this->koneksi, "SELECT * FROM data_pengarang");
+            while($row = mysqli_fetch_array($data)) {
+                $hasil[] = $row;
+            }
+            return $hasil;
+        }
+        function ambil_data_jenis_buku() {
+            $data = mysqli_query($this->koneksi, "SELECT * FROM data_jenis_buku");
+            while($row = mysqli_fetch_array($data)) {
+                $hasil[] = $row;
+            }
+            return $hasil;
+        }
+        function ambil_data_penerbit() {
+            $data = mysqli_query($this->koneksi, "SELECT * FROM data_penerbit");
+            while($row = mysqli_fetch_array($data)) {
+                $hasil[] = $row;
+            }
+            return $hasil;
+        }
+        function tambah_data_buku($kode_buku, $judul_buku, $kode_pengarang, $kode_jenis_buku, $kode_penerbit, $isbn, $tahun, $deskripsi, $jumlah_buku) {
+            mysqli_query($this->koneksi, "INSERT INTO data_buku VALUES ('','$kode_buku', '$judul_buku', '$kode_pengarang', '$kode_jenis_buku', '$kode_penerbit', '$isbn', '$tahun', '$deskripsi', '$jumlah_buku')");
+        }
+        function tampil_data_buku(){
+            $data = mysqli_query($this->koneksi, "SELECT a.*, b.*, c.*, d.* FROM data_buku a INNER JOIN data_pengarang b ON b.kode_pengarang = a.kode_pengarang INNER JOIN data_jenis_buku c ON c.kode_jenis_buku = a.kode_jenis_buku INNER JOIN data_penerbit d ON d.kode_penerbit = a.kode_penerbit /*INNER JOIN data_peminjam e ON e.kode_peminjam = a.kode_peminjam*/");
+            while($row = mysqli_fetch_array($data)) {
+                $hasil[] = $row;
+            }
+            return $hasil;
+        }
     }
 ?>
