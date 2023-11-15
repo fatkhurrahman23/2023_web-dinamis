@@ -30,5 +30,15 @@
             mysqli_query($this->koneksi, "INSERT INTO data_peminjam (id, kode_peminjam, nama_peminjam, jenis_kelamin, tanggal_lahir, alamat, pekerjaan)
                 VALUES('', '$kode_peminjaman', '$nama_peminjam', '$jenis_kelamin', '$tanggal_lahir', '$alamat', '$pekerjaan')");
         }
+        function kode_peminjam($kode_peminjam){
+            $data_peminjam = mysqli_query($this->koneksi, "SELECT a.*, b.* FROM data_peminjam a INNER JOIN jenis_kelamin b ON b.kode_jk = a.jenis_kelamin WHERE a.kode_peminjam='$kode_peminjam'");
+            while($row_peminjam = mysqli_fetch_array($data_peminjam)) {
+                $hasil_peminjam[] = $row_peminjam;
+            }
+            return $hasil_peminjam;
+        }
+        function edit_data_peminjam($kode_peminjam, $nama_peminjam, $jenis_kelamin, $tanggal_lahir, $alamat, $pekerjaan) {
+            mysqli_query($this->koneksi, "UPDATE data_peminjam SET nama_peminjam='$nama_peminjam', jenis_kelamin='$jenis_kelamin', tanggal_lahir='$tanggal_lahir', alamat='$alamat', pekerjaan='$pekerjaan' WHERE kode_peminjam='$kode_peminjam'");
+        }
     }
 ?>
