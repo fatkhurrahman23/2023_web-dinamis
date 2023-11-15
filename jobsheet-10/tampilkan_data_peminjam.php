@@ -20,6 +20,7 @@
             <th>Alamat</th>
             <th>Pekerjaan</th>
             <th>Edit</th>
+            <th>Hapus</th>
         </tr>
         <?php
             $no = 1;
@@ -38,9 +39,8 @@
                     </td>
                     <td><?php echo $x["alamat"]?></td>
                     <td><?php echo $x["pekerjaan"]?></td>
-                    <td>
-                        <a href="edit_data_peminjam.php?id= <?php echo $x['kode_peminjam']; ?>">Edit</a>
-                    </td>
+                    <td><a href="edit_data_peminjam.php?id=<?php echo $x['kode_peminjam']; ?>">Edit</a></td>
+                    <td><a href="hapus_data_peminjam.php?id=<?php echo $x['kode_peminjam']; ?>">Hapus</a></td>
                 </tr>
                 <?php
             }
