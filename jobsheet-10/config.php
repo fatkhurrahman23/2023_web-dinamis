@@ -63,11 +63,11 @@
             }
             return $hasil;
         }
-        function tambah_data_($kode_, $nama_) {
-            mysqli_query($this->koneksi, "INSERT INTO data_ VALUES ('','$kode_', '$nama_')");
+        function tambah_data_pengarang($kode_pengarang, $nama_pengarang) {
+            mysqli_query($this->koneksi, "INSERT INTO data_pengarang VALUES ('','$kode_pengarang', '$nama_pengarang')");
         }
-        function tampil_data_() {
-            $data = mysqli_query($this->koneksi, "SELECT * FROM data_");
+        function tampil_data_pengarang() {
+            $data = mysqli_query($this->koneksi, "SELECT * FROM data_pengarang");
             while($row = mysqli_fetch_array($data)) {
                 $hasil[] = $row;
             }
