@@ -98,7 +98,33 @@
             mysqli_query($this->koneksi, "INSERT INTO data_buku VALUES ('','$kode_buku', '$judul_buku', '$kode_pengarang', '$kode_jenis_buku', '$kode_penerbit', '$isbn', '$tahun', '$deskripsi', '$jumlah_buku')");
         }
         function tampil_data_buku(){
-            $data = mysqli_query($this->koneksi, "SELECT a.*, b.*, c.*, d.* FROM data_buku a INNER JOIN data_pengarang b ON b.kode_pengarang = a.kode_pengarang INNER JOIN data_jenis_buku c ON c.kode_jenis_buku = a.kode_jenis_buku INNER JOIN data_penerbit d ON d.kode_penerbit = a.kode_penerbit /*INNER JOIN data_peminjam e ON e.kode_peminjam = a.kode_peminjam*/");
+            $data = mysqli_query($this->koneksi, "SELECT a.*, b.*, c.*, d.* FROM data_buku a INNER JOIN data_pengarang b ON b.kode_pengarang = a.kode_pengarang INNER JOIN data_jenis_buku c ON c.kode_jenis_buku = a.kode_jenis_buku INNER JOIN data_penerbit d ON d.kode_penerbit = a.kode_penerbit");
+            while($row = mysqli_fetch_array($data)) {
+                $hasil[] = $row;
+            }
+            return $hasil;
+        }
+        function ambil_data_buku(){
+            $data = mysqli_query($this->koneksi, "SELECT * FROM data_buku");
+            while($row = mysqli_fetch_array($data)) {
+                $hasil[] = $row;
+            }
+            return $hasil;
+        }
+        function ambil_data_peminjam(){
+            $data = mysqli_query($this->koneksi, "SELECT * FROM data_peminjam");
+            while($row = mysqli_fetch_array($data)) {
+                $hasil[] = $row;
+            }
+            return $hasil;
+        }
+        function tambah_peminjaman($kode_buku, $kode_peminjam) {
+            $tanggal_pinjam = date('Y-m-d');
+            $tanggal_kembali = date('Y-m-d', time() + (60 * 60 * 24 * 7));
+            mysqli_query($this->koneksi, "INSERT INTO peminjaman VALUES ('','$kode_buku', '$kode_peminjam', '$tanggal_pinjam', '$tanggal_kembali', '1')");
+        }
+        function tampil_peminjaman(){
+            $data = mysqli_query($this->koneksi, "SELECT a.*, b.*, c.* FROM peminjaman a INNER JOIN data_buku b ON b.kode_buku = a.kode_buku INNER JOIN data_peminjam c ON c.kode_peminjam = a.kode_peminjam");
             while($row = mysqli_fetch_array($data)) {
                 $hasil[] = $row;
             }
