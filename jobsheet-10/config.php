@@ -43,7 +43,10 @@
         function hapus_data_peminjam($kode_peminjam) {
             mysqli_query($this->koneksi, "DELETE FROM data_peminjam WHERE kode_peminjam='$kode_peminjam'");
         }
-        function tampil_jenis_buku(){
+        function tambah_data_jenis_buku($kode_jenis_buku, $nama_jenis_buku) {
+            mysqli_query($this->koneksi, "INSERT INTO data_jenis_buku VALUE ('','$kode_jenis_buku', '$nama_jenis_buku')");
+        }
+        function tampil_data_jenis_buku(){
             $data = mysqli_query($this->koneksi, "SELECT * FROM data_jenis_buku");
             while($row = mysqli_fetch_array($data)) {
                 $hasil[] = $row;
