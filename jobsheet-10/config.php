@@ -44,7 +44,7 @@
             mysqli_query($this->koneksi, "DELETE FROM data_peminjam WHERE kode_peminjam='$kode_peminjam'");
         }
         function tambah_data_jenis_buku($kode_jenis_buku, $nama_jenis_buku) {
-            mysqli_query($this->koneksi, "INSERT INTO data_jenis_buku VALUE ('','$kode_jenis_buku', '$nama_jenis_buku')");
+            mysqli_query($this->koneksi, "INSERT INTO data_jenis_buku VALUES ('','$kode_jenis_buku', '$nama_jenis_buku')");
         }
         function tampil_data_jenis_buku(){
             $data = mysqli_query($this->koneksi, "SELECT * FROM data_jenis_buku");
@@ -58,6 +58,16 @@
         }
         function tampil_data_penerbit() {
             $data = mysqli_query($this->koneksi, "SELECT * FROM data_penerbit");
+            while($row = mysqli_fetch_array($data)) {
+                $hasil[] = $row;
+            }
+            return $hasil;
+        }
+        function tambah_data_($kode_, $nama_) {
+            mysqli_query($this->koneksi, "INSERT INTO data_ VALUES ('','$kode_', '$nama_')");
+        }
+        function tampil_data_() {
+            $data = mysqli_query($this->koneksi, "SELECT * FROM data_");
             while($row = mysqli_fetch_array($data)) {
                 $hasil[] = $row;
             }
