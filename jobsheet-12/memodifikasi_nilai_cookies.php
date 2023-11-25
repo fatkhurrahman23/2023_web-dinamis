@@ -1,6 +1,6 @@
 <?php
     $cookie_name = "user";
-    $cookie_value = "Fathur";
+    $cookie_value = "fathuyyyy";
     setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 
     if(!isset($_COOKIE[$cookie_name])) {
