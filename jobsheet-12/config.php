@@ -146,5 +146,15 @@
             }
             return $hasil;
         }
+        function tampil_data_peminjaman_peminjam($username){
+            $data = mysqli_query($this->koneksi, "SELECT a.*, b.*, c.* FROM peminjaman a
+            INNER JOIN data_buku b ON b.kode_buku = a.kode_buku
+            INNER JOIN data_peminjam c ON c.kode_peminjam = a.kode_peminjam 
+            WHERE a.kode_peminjam = '$username'");
+            while($row = mysqli_fetch_array($data)) {
+                $hasil[] = $row;
+            }
+            return $hasil;
+        }
     }
 ?>
