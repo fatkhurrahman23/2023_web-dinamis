@@ -41,7 +41,7 @@
                             <?php
                                 $no = 1;
                                 foreach($db->tampil_data_jenis_kelamin() as $x) {
-                                        echo '<option value="'.$x['kode_jk'].'">'.$x['keterangan_jk'].'</option>';
+                                    echo '<option value="'.$x['kode_jk'].'">'.$x['keterangan_jk'].'</option>';
                             ?>
                             <?php
                                 }
